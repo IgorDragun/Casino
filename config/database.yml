@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: super_admin
+  password: SUPERADMIN
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: casino_development
+
+test:
+  <<: *default
+  database: casino_test
+
+production:
+  <<: *default
+  database: casino_production
+  username: casino
+  password: <%= ENV["CASINO_DATABASE_PASSWORD"] %>
