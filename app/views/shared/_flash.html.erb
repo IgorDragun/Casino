@@ -1,3 +1,8 @@
 <% flash.each do |message_type, message| %>
+  <% if message_type == "alert" %>
+    <% message_type = "danger" %>
+  <% elsif message_type == "notice" %>
+    <% message_type = "info" %>
+  <% end %>
   <%= tag.div message, class: "alert alert-#{message_type}" %>
 <% end %>
